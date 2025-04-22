@@ -2,6 +2,7 @@ services:
   database:
     image: mongo:latest
     container_name: ${DATABASE_HOST}
+    restart: always
     env_file: .env
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
