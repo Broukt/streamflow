@@ -4,11 +4,13 @@
   "description": "Módulo de usuarios para la plataforma StreamFlow",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "seed": "node utils/seeder.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
+    "env": "^0.0.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -19,7 +21,11 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "prisma": "^6.5.0"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node utils/seeder.js",
     "@faker-js/faker": "^8.0.2",
     "nodemon": "^3.0.1"
-  }
+  },
 }
