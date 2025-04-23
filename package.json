@@ -1,8 +1,11 @@
 {
-  "name": "usuarios-modulo",
+  "name": "streamflow",
   "version": "1.0.0",
-  "description": "Módulo de usuarios para la plataforma StreamFlow",
-  "main": "app.js",
+  "description": "",
+  "license": "ISC",
+  "author": "Jairo Calcina y Luis Ardiles",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
