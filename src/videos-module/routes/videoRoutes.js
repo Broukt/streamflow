@@ -13,7 +13,7 @@ router.get('/', getAllVideos)
 
 router.use(protect);
 
-router.post(restrictTo('Administrador'), uploadVideo);
+router.post('/', restrictTo('Administrador'), uploadVideo);
 
 router
   .route("/:id")

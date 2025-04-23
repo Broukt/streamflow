@@ -2,8 +2,8 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const admin = require('firebase-admin');
-const AppError = require('../../utils/appError');
-const catchAsync = require('../../utils/catchAsync');
+const AppError = require('../utils/appError');
+const catchAsync = require('../utils/catchAsync');
 
 // Asegúrate de inicializar Firebase Admin antes de usar este middleware
 // const serviceAccount = require('../../path/to/serviceAccountKey.json');

@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const usuariosController = require('../controllers/usuarios.controller');
+const usuariosController = require('../controllers/userController');
 const { verificarToken, esAdmin, esMismoUsuarioOAdmin } = require('../middleware/authMiddleware');
 
 // Ruta para crear un usuario (público para registro de clientes, admin para crear administradores)
