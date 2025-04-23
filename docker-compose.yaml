@@ -18,3 +18,18 @@ services:
             PMA_PASSWORD: rootpassword
         ports:
         - "8080:80"
+  database:
+    image: mongo:latest
+    container_name: ${DATABASE_HOST}
+    restart: always
+    env_file: .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "${DATABASE_PORT}:27017"
+    volumes:
+      - database-v:/data/db
+volumes:
+  database-v:
+    name: "database-v"
