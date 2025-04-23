@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== "production") {
   const host = DATABASE_HOST || "localhost";
   URI = `mongodb://${authPart}${host}:${DATABASE_PORT}/${DATABASE_DB}?authSource=admin`;
 } else {
-  URI = MONGODB_URI || "mongodb://localhost:27017";
+  URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
 }
 /**
  * Conecta a MongoDB usando Mongoose y devuelve la conexión.
