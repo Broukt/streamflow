@@ -7,13 +7,13 @@ let URI;
 
 if (process.env.NODE_ENV !== "production") {
   const authPart =
-    DATABASE_USERNAME && DATABASE_PASSWORD
-      ? `${encodeURIComponent(DATABASE_USERNAME)}:${encodeURIComponent(
-          DATABASE_PASSWORD
+    process.env.DATABASE_USERNAME && process.env.DATABASE_PASSWORD
+      ? `${encodeURIComponent(process.env.DATABASE_USERNAME)}:${encodeURIComponent(
+          process.env.DATABASE_PASSWORD
         )}@`
       : "";
-  const host = DATABASE_HOST || "localhost";
-  URI = `mongodb://${authPart}${host}:${DATABASE_PORT}/${DATABASE_DB}?authSource=admin`;
+  const host = process.env.DATABASE_HOST || "localhost";
+  URI = `mongodb://${authPart}${host}:${process.env.DATABASE_PORT}/${process.env.DATABASE_DB}?authSource=admin`;
 } else {
   URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
 }
