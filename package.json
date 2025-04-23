@@ -4,9 +4,21 @@
   "description": "Módulo de usuarios para la plataforma StreamFlow",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "seed:receipts": "node src/receipt-module/database/seeder.js",
+    "dev": "nodemon app.js",
+    "seed": "node utils/seeder.js",
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^11.1.0"
+  }
+  "dependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "@prisma/client": "^6.5.0",
     "dotenv": "^16.4.7",
     "env": "^0.0.2",
     "mongodb": "^6.15.0",
@@ -18,14 +30,11 @@
     "firebase-admin": "^11.10.1",
     "joi": "^17.10.1",
     "jsonwebtoken": "^9.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "prisma": "^6.5.0"
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "seed": "node utils/seeder.js",
-    "@faker-js/faker": "^8.0.2",
     "nodemon": "^3.0.1"
   },
 }
