@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/auth.controller');
-const { verificarToken, esMismoUsuarioOAdmin } = require('../middleware/auth.middleware');
+const authController = require('../controllers/authController');
+const { verificarToken, esMismoUsuarioOAdmin } = require('../middleware/authMiddleware');
 
 // Ruta para iniciar sesión
 router.post('/login', authController.login);

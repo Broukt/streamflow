@@ -10,14 +10,14 @@ services:
     ports:
       - "3307:3306"
   phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
-        container_name: phpmyadmin-taller
-        environment:
-            PMA_HOST: mariadb
-            PMA_USER: root
-            PMA_PASSWORD: rootpassword
-        ports:
-        - "8080:80"
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin-taller
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    ports:
+      - "8080:80"
   database:
     image: mongo:latest
     container_name: ${DATABASE_HOST}

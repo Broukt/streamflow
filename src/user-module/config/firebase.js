@@ -1,21 +1,19 @@
-const admin = require('firebase-admin');
-require('dotenv').config();
+const admin = require("firebase-admin");
+const path = require("path");
+require("dotenv").config();
 
-const serviceAccount = {
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-};
+const keyFile = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
+if (!keyFile) {
+  throw new Error("Missing FIREBASE_SERVICE_ACCOUNT_KEY in .env");
+}
+
+const serviceAccountPath = path.resolve(__dirname, keyFile);
+const serviceAccount = require(serviceAccountPath);
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount),
 });
 
-const db = admin.firestore();
-const usuariosCollection = db.collection('usuarios');
+console.log("Connected to Firestore");
 
-module.exports = {
-  admin,
-  db,
-  usuariosCollection
-};
+module.exports = { db: admin.firestore() };

@@ -1,36 +1,25 @@
 const router = require("express").Router();
-// const { protect, restrictTo } = require('../../authModule/middleware/authMiddleware');
+const { protect, restrictTo } = require("../../middlewares/authMiddleware");
 const {
   createReceipt,
   getReceipt,
   updateReceiptStatus,
   deleteReceipt,
   getReceiptsByUserId,
-} = require('../controllers/receiptController');
+} = require("../controllers/receiptController");
 
-// Todas las rutas de facturas requieren autenticación
-// router.use(protect);
+router.use(protect);
 
-// Operaciones sobre la colección de facturas
-router
-  .route('/')
-  .post(//restrictTo('admin'), 
-  createReceipt);
-  // .get(restrictTo('admin', 'cliente'), getAllReceipts); // Pending: implementar listado de facturas
-
-// Operaciones sobre una factura específica
-router
-  .route('/:id')
-  .get(//restrictTo('admin', 'cliente'),
-  getReceipt)
-  .patch(//restrictTo('admin'),
-  updateReceiptStatus)
-  .delete(//restrictTo('admin'),
-  deleteReceipt);
+router.route("/").post(restrictTo("Administrador"), createReceipt);
 
 router
-  .route('/user/:userId')
-  .get(//restrictTo('admin', 'cliente'),
-  getReceiptsByUserId);
+  .route("/:id")
+  .get(restrictTo("Administrador", "Cliente"), getReceipt)
+  .patch(restrictTo("Administrador"), updateReceiptStatus)
+  .delete(restrictTo("Administrador"), deleteReceipt);
+
+router
+  .route("/user/:userId")
+  .get(restrictTo("Administrador", "Cliente"), getReceiptsByUserId);
 
 module.exports = router;

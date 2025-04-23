@@ -1,18 +1,22 @@
-const mongoose = require('mongoose');
-const {
-  DATABASE_USERNAME,
-  DATABASE_PASSWORD,
-  DATABASE_DB,
-  DATABASE_PORT,
-  DATABASE_HOST // add host if needed
-} = require('../config/env');
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-const authPart = DATABASE_USERNAME && DATABASE_PASSWORD
-  ? `${encodeURIComponent(DATABASE_USERNAME)}:${encodeURIComponent(DATABASE_PASSWORD)}@`
-  : '';
-const host = DATABASE_HOST || 'localhost';
-const URI = `mongodb://${authPart}${host}:${DATABASE_PORT}/${DATABASE_DB}?authSource=admin`;
+dotenv.config();
 
+let URI;
+
+if (process.env.NODE_ENV !== "production") {
+  const authPart =
+    process.env.DATABASE_USERNAME && process.env.DATABASE_PASSWORD
+      ? `${encodeURIComponent(process.env.DATABASE_USERNAME)}:${encodeURIComponent(
+          process.env.DATABASE_PASSWORD
+        )}@`
+      : "";
+  const host = process.env.DATABASE_HOST || "localhost";
+  URI = `mongodb://${authPart}${host}:${process.env.DATABASE_PORT}/${process.env.DATABASE_DB}?authSource=admin`;
+} else {
+  URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
+}
 /**
  * Conecta a MongoDB usando Mongoose y devuelve la conexión.
  */
@@ -22,10 +26,10 @@ async function connectMongo() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('Connected to Mongo');
+    console.log("Connected to Mongo");
     return mongoose.connection;
   } catch (err) {
-    console.error('Error connecting to Mongo:', err);
+    console.error("Error connecting to Mongo:", err);
     throw err; // propagamos para manejar en el caller
   }
 }
@@ -36,9 +40,9 @@ async function connectMongo() {
 async function closeMongo() {
   try {
     await mongoose.connection.close();
-    console.log('Closed MongoDB connection');
+    console.log("Closed MongoDB connection");
   } catch (err) {
-    console.error('Error closing MongoDB connection:', err);
+    console.error("Error closing MongoDB connection:", err);
   }
 }
 
