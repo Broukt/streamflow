@@ -1,40 +1,37 @@
 {
-  "name": "usuarios-modulo",
+  "name": "streamflow",
   "version": "1.0.0",
-  "description": "Módulo de usuarios para la plataforma StreamFlow",
-  "main": "app.js",
+  "description": "Streamflow is a platform that allows users to create and manage their own videos.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "start": "node src/index.js",
     "seed:receipts": "node src/receipt-module/database/seeder.js",
+    "seed:users": "node src/user-module/utils/seeder.js",
+    "seed:videos": "node src/video-module/database/seeder.js",
     "dev": "nodemon app.js",
-    "seed": "node utils/seeder.js",
+    "seed": "node utils/seeder.js"
   },
-  "dependencies": {
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "uuid": "^11.1.0"
-  }
   "dependencies": {
     "@faker-js/faker": "^9.7.0",
     "@prisma/client": "^6.5.0",
-    "dotenv": "^16.4.7",
-    "env": "^0.0.2",
-    "mongodb": "^6.15.0",
-    "mongoose": "^8.13.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.7",
+    "env": "^0.0.2",
     "express": "^4.18.2",
     "firebase-admin": "^11.10.1",
     "joi": "^17.10.1",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.0",
     "morgan": "^1.10.0",
+    "pg": "^8.15.1",
+    "sequelize": "^6.37.7",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "prisma": "^6.5.0"
-    "nodemon": "^3.0.1"
-  },
+  }
 }
