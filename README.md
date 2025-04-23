@@ -33,7 +33,7 @@ npm install
 cp .env.example .env
 ```
 
-5. **Generar cliente de prisma**
+5. **Generar cliente de prisma** (Asegurate de tener una base de datos Postgre disponible y que se conecte con la aplicación mediante la variable de entorno DATABASE_URL)
 ```bash
 npx prisma generate
 ```
